@@ -1,74 +1,106 @@
-# 328T628T-starter-repo
+# 328T628T Starter Repo
 
-A basic template repo to start from when developing visuals and interactives for the modern web.
+Starter template for class projects using Vite, vanilla JS, and CSS.
 
-## Quick start (local)
+## What this repo is for
 
-1. Install Node (recommended LTS >=16).
-2. Install dependencies and run the dev server:
+- Build your project locally with Vite.
+- Publish your project manually to GitHub Pages.
+- Share your live URL for review.
+
+## Requirements
+
+- Node.js 18+ (or newer LTS)
+- npm
+- A GitHub account
+
+## 1. Fork this repo
+
+1. Click **Fork** on GitHub.
+2. Create your own copy under your account.
+
+## 2. Clone and run locally
 
 ```bash
+git clone https://github.com/<your-username>/<your-fork-repo>.git
+cd <your-fork-repo>
 npm install
 npm run dev
 ```
 
-Open the forwarded URL shown by Vite (usually `http://localhost:5173`).
+Open the local URL shown in your terminal (usually http://localhost:5173).
 
-## Build / Preview
+## 3. One-time setup for GitHub Pages (manual deploy)
 
-Build a production bundle and preview it locally:
+In your fork on GitHub:
+
+- Go to Settings -> Pages.
+- Under Build and deployment:
+- Source: Deploy from a branch
+- Branch: main
+- Folder: /docs
+- Click Save.
+
+## 4. Make sure Vite builds for subfolders
+
+Your vite.config.js should include:
+
+```javascript
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  base: './',
+})
+```
+
+This prevents broken JS/CSS paths on GitHub Pages in forks.
+
+## 5. Publish to Pages manually (every time you want to deploy)
+
+After making code changes:
 
 ```bash
 npm run build
-npm run preview
+rm -rf docs
+cp -R dist docs
+touch docs/.nojekyll
+git add docs
+git commit -m "Deploy to GitHub Pages"
+git push origin main
 ```
 
-## Student Setup (Fork + GitHub Pages)
+Then wait about 1-2 minutes and refresh your Pages URL. You may use GitHub Desktop instead of command line git if you wish.
 
-Use this checklist to publish your project from your own fork.
+## 6. Your Live Site URL
 
-### 1. Fork this repo
+Your site is typically:
 
-Click Fork (top-right on GitHub).
+https://<your-username>.github.io/<your-fork-repo>/
 
-Create your own copy under your GitHub account.
+Find the exact URL in Settings -> Pages.
 
-### 2. Clone and run locally
+## 7. Class submission checklist
 
-### 3. Enable GitHub Pages in your fork
+Submit both:
 
-Open your fork on GitHub.
-
-Go to Settings -> Pages.
-
-Under Build and deployment, set Source to GitHub Actions.
-
-### 4. Trigger deployment
-
-Commit and push to main:
-
-Go to the Actions tab and wait for Deploy to GitHub Pages to complete.
-
-### 5. Find your live site
-
-Return to Settings -> Pages.
-
-Copy the published URL (usually https://<your-username>.github.io/<your-fork-repo>/).
-
-### 6. Submit for review
-
-Share both:
-
-- Your fork URL
+- Your fork repository URL
 - Your live GitHub Pages URL
 
-### Common issues
+## Troubleshooting
 
-**404 / missing JS or CSS:** wait 1-2 minutes and hard refresh.
-**No deployment running:** confirm Pages source is set to GitHub Actions.
-**Action failed:** open Actions -> Deploy to GitHub Pages and read the failed step log.
+### Page is blank or assets 404
 
-### Other notes
+- Confirm vite.config.js uses base: './'.
+- Rebuild and redeploy with the commands above.
+- Hard refresh browser (Cmd+Shift+R on macOS).
 
-Update your site after changes
-Every push to main automatically rebuilds and redeploys your Pages site.
+### Old version still showing 
+
+- Wait another minute.
+- Hard refresh.
+- Confirm latest commit includes updated docs/ files.
+
+### Pages not updating
+
+- Check Settings -> Pages is set to main + /docs.
+- Confirm you pushed to main.
