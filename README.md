@@ -14,6 +14,25 @@ Starter template for class projects using Vite, vanilla JS, and CSS.
 - npm
 - A GitHub account
 
+## 0. Install node.js and npm
+
+1. Install [node.js](https://nodejs.org/en/download). Make sure you don't click any boxes or buttons to omit npm.
+  - Alternatively, Mac users can run the following in a terminal instance:
+
+```bash
+brew install node
+```
+
+2. Open a terminal (Mac) or Powershell (PC) instance.
+3. Run the following commands, one at a time:
+
+```bash
+node -v
+npm -v
+```
+
+Make sure you get a version number of some kind.
+
 ## 1. Fork this repo
 
 1. Click **Fork** on GitHub.
