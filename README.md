@@ -40,10 +40,18 @@ Make sure you get a version number of some kind.
 
 ## 2. Clone and run locally
 
+You'll need to run the following two lines if you're working in a local IDE.
+
 ```bash
 git clone https://github.com/<your-username>/<your-fork-repo>.git
 cd <your-fork-repo>
+```
+
+Whether you're on your local machine or in codespaces, you'll then run these three lines:
+
+```bash
 npm install
+nvm use
 npm run dev
 ```
 
